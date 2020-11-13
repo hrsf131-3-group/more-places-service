@@ -1,0 +1,31 @@
+[{ 
+id: 1, 
+image: "https://s3-us-west-1.amazonaws.com/bnb.housing/download20200902042444.png", 
+description: "https://s3-us-west-1.amazonaws.com/bnb.housing/download20200902042444.png", 
+price: 104 / night, 
+numOfReviews: 94, 
+rating: 3.87, 
+isFavorite: false 
+}, 
+
+{ 
+id: 2, 
+image: "https://s3-us-west-1.amazonaws.com/bnb.housing/93acd77dfa169f58e6c07fe94d2d8d17.jpg", 
+description: "undefined", 
+price: 197 / night, 
+numOfReviews: 43, 
+rating: 4.92, 
+isFavorite: false 
+}, 
+
+{ 
+id: 3, 
+image: "https://s3-us-west-1.amazonaws.com/bnb.housing/download20200902042444.png", 
+description: "https://s3-us-west-1.amazonaws.com/bnb.housing/93acd77dfa169f58e6c07fe94d2d8d17.jpg", 
+price: 139 / night, 
+numOfReviews: 80, 
+rating: 4.19, 
+isFavorite: false 
+}
+
+]

@@ -1,5 +1,5 @@
 {
-  "name": "asd",
+  "name": "more-places-services",
   "version": "",
   "description": "",
   "author": "",
@@ -11,7 +11,11 @@
     "seed": "node seed.js"
   },
   "dependencies": {
-    "faker": "^5.1.0"
+    "express": "^4.15.0",
+    "faker": "^5.1.0",
+    "mongoose": "^4.9.6",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
