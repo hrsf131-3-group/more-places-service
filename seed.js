@@ -1,5 +1,5 @@
 const fs = require('fs')
-const faker = require('faker');
+
 
 const images = ['https://s3-us-west-1.amazonaws.com/bnb.housing/93acd77dfa169f58e6c07fe94d2d8d17.jpg', 'https://s3-us-west-1.amazonaws.com/bnb.housing/download20200902042444.png'];
 const description = ['house', 'hotel', 'apartment'];

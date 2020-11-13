@@ -49,8 +49,10 @@ Listing.remove({}, (err) => {
   }
 })
 
+//will hold an array of objects of each listing
 let rawData = [];
 
+//data object creation
 let createListing = (id) => {
   return {
     id: id,
@@ -63,6 +65,7 @@ let createListing = (id) => {
   }
 }
 
+//
 seedData = (entries) => {
   let created = 1;
 
@@ -81,3 +84,14 @@ seedData = (entries) => {
 }
 
 seedData(3);
+
+let find = (callback) => {
+  Listing.find({}).exec( (err, res) => {
+    if (err) {
+      return console.error(err);
+    }
+    callback(res);
+  })
+}
+
+module.exports.find = find;
