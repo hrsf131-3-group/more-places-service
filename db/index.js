@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 
-mongoose.connect('mongodb://localhost/fetcher');
+mongoose.connect('mongodb://localhost/morePlaces');
 
 let morePlaces = new mongoose.Schema({
   id: {
@@ -30,5 +30,5 @@ let user_favorites = new mongoose.Schema({
   ]
 });
 
-let place = mongoose.model('Place', morePlaces);
+
 
