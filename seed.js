@@ -5,25 +5,25 @@ const images = ['https://s3-us-west-1.amazonaws.com/bnb.housing/93acd77dfa169f58
 const description = ['house', 'hotel', 'apartment'];
 
 createRecord = (images, id, last) => {
-  let dataStr = '{ \n';
-  dataStr += `id: ${id}, \n`;
-  dataStr += `image: "${images[id%2]}", \n`;
-  dataStr += `description: "${images[id%3]}", \n`;
-  dataStr += `price: ${Math.floor(Math.random()*300 + 100)} / night, \n`;
-  dataStr += `numOfReviews: ${Math.floor(Math.random()*100)}, \n`;
-  dataStr += `rating: ${Math.floor((Math.random()*150 + 350))/100}, \n`;
-  dataStr += `isFavorite: false \n`;
-  dataStr += '}'
+  let dataStr = '  {\n';
+  dataStr += `    id: ${id}, \n`;
+  dataStr += `    image: "${images[id%2]}", \n`;
+  dataStr += `    description: "${images[id%3]}", \n`;
+  dataStr += `    price: ${Math.floor(Math.random()*300 + 100)} / night, \n`;
+  dataStr += `    numOfReviews: ${Math.floor(Math.random()*100)}, \n`;
+  dataStr += `    rating: ${Math.floor((Math.random()*150 + 350))/100}, \n`;
+  dataStr += `    isFavorite: false \n`;
+  dataStr += '  }'
   if(id !== last) {
-    dataStr += ', '
+    dataStr += ','
   }
 
-  return dataStr += '\n\n';
+  return dataStr += '\n';
 }
 
 seedData = (entries) => {
   let created = 1;
-  let fileText = '[';
+  let fileText = '[\n';
   while (created <= entries) {
     fileText += createRecord(images, created, entries);
     created++;
@@ -41,6 +41,6 @@ seedData = (entries) => {
   })
 }
 
-seedData(3)
+seedData(100)
   .then(() => {console.log('Data seeded!')})
   .catch(() => {console.log('something went wrong :(')})

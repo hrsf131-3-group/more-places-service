@@ -83,7 +83,7 @@ seedData = (entries) => {
   })
 }
 
-seedData(3);
+seedData(100);
 
 let find = (callback) => {
   Listing.find({}).exec( (err, res) => {
