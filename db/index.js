@@ -40,6 +40,15 @@ const description = ['house', 'hotel', 'apartment'];
 
 const Listing = mongoose.model('Listing', morePlaces);
 
+//clears data in collection prior to reseeding
+Listing.remove({}, (err) => {
+  if (err) {
+    console.error('ERROR CLEARING DATABASE', err);
+  } else {
+    console.log('Database cleared prior to seeding');
+  }
+})
+
 let rawData = [];
 
 let createListing = (id) => {
@@ -66,7 +75,7 @@ seedData = (entries) => {
     if (err) {
       console.error('THERE\'S AN ERROR IN MONGO', err);
     } else {
-      console.log('SAVED TO DATABASE!')
+      console.log('SEEDED TO DATABASE!')
     }
   })
 }
