@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 const faker = require('faker');
+// const seed = require('../seed.js');
 
 mongoose.connect('mongodb://localhost/morePlaces');
 
 /* ----------------- schema for listings ----------------- */
-let morePlaces = new mongoose.Schema({
+let morePlacesSchema = new mongoose.Schema({
   id: {
     type: Number,
     unique: true
@@ -35,58 +36,31 @@ let morePlaces = new mongoose.Schema({
 
 /* -----------------Seeding to database ----------------- */
 
-const images = ['https://s3-us-west-1.amazonaws.com/bnb.housing/93acd77dfa169f58e6c07fe94d2d8d17.jpg', 'https://s3-us-west-1.amazonaws.com/bnb.housing/download20200902042444.png'];
-const description = ['house', 'hotel', 'apartment'];
+const places = mongoose.model('places', morePlacesSchema);
 
-const Listing = mongoose.model('Listing', morePlaces);
+let saveSeedData = (listings) => {
+  //clears data in collection prior to reseeding
+  places.remove({}, (err) => {
+    if (err) {
+      console.error('ERROR CLEARING DATABASE', err);
+    } else {
+      console.log('Database cleared prior to seeding');
+    }
+  })
 
-//clears data in collection prior to reseeding
-Listing.remove({}, (err) => {
-  if (err) {
-    console.error('ERROR CLEARING DATABASE', err);
-  } else {
-    console.log('Database cleared prior to seeding');
-  }
-})
-
-//will hold an array of objects of each listing
-let rawData = [];
-
-//data object creation
-let createListing = (id) => {
-  return {
-    id: id,
-    image: images[id%2],
-    description: description[id%3],
-    price: `${Math.floor(Math.random()*300 + 100)} / night`,
-    numOfReviews: Math.floor(Math.random()*100),
-    rating: Math.floor((Math.random()*150 + 350))/100,
-    isFavorite: false
-  }
-}
-
-//
-seedData = (entries) => {
-  let created = 1;
-
-  while (created <= entries) {
-    rawData.push(createListing(created));
-    created++;
-  }
-
-  Listing.insertMany(rawData, {ordered: false}, (err, result) => {
+  //inserts all seeded data to database
+  places.insertMany(listings, {ordered: false}, (err, result) => {
     if (err) {
       console.error('THERE\'S AN ERROR IN MONGO', err);
     } else {
-      console.log('SEEDED TO DATABASE!')
+      console.log('SEEDED TO DATABASE!');
     }
   })
 }
 
-seedData(100);
-
+//query func
 let find = (callback) => {
-  Listing.find({}).exec( (err, res) => {
+  places.find({}).exec( (err, res) => {
     if (err) {
       return console.error(err);
     }
@@ -95,3 +69,4 @@ let find = (callback) => {
 }
 
 module.exports.find = find;
+module.exports.saveSeedData = saveSeedData;
