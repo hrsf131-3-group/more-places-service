@@ -1,9 +1,9 @@
 const fs = require('fs');
 const db = require('./db/index.js')
 
-
 const images = ['https://s3-us-west-1.amazonaws.com/bnb.housing/93acd77dfa169f58e6c07fe94d2d8d17.jpg', 'https://s3-us-west-1.amazonaws.com/bnb.housing/download20200902042444.png'];
-const description = ['house', 'hotel', 'apartment'];
+const type = ['House', 'Hotel', 'Apartment'];
+const description = ['Big Bear Loft', 'Double Queen', 'KingSizeBed', 'Near Disneyland']
 
 //will hold an array of objects of each listing
 let rawData = [];
@@ -13,8 +13,9 @@ let createListing = (id) => {
   return {
     id: id,
     image: images[id%2],
-    description: description[id%3],
-    price: `${Math.floor(Math.random()*300 + 100)} / night`,
+    type: `${type[id%3]} ${Math.floor(Math.random()*4 + 1)} Beds`,
+    description: description[id%4],
+    price: `$${Math.floor(Math.random()*300 + 100)} / night`,
     numOfReviews: Math.floor(Math.random()*100),
     rating: Math.floor((Math.random()*150 + 350))/100,
     isFavorite: false
@@ -24,17 +25,45 @@ let createListing = (id) => {
 //seeding to rawData array
 seedData = (entries) => {
   let created = 1;
+  let listID = 1;
 
   while (created <= entries) {
-    rawData.push(createListing(created));
-    created++;
-  }
+    let morePlaces = {
+      id: created++,
+      listings: []
+    }
 
-  //func from db to save seeded data to db
+    for (let i = 0; i < 12; i++) {
+      morePlaces.listings.push(createListing(listID++))
+    }
+    rawData.push(morePlaces);
+  }
+  // func from db to save seeded data to db
+  console.log(JSON.stringify(rawData))
   db.saveSeedData(rawData);
 }
 
-seedData(100);
+
+//seeding to rawData array
+// seedData = (entries) => {
+//   let created = 1;
+
+//   while (created <= entries) {
+//     rawData.push(createListing(created++));
+//   }
+//   // func from db to save seeded data to db
+//   db.saveSeedData(rawData);
+// }
+
+//saves raw data to db
+// saveToDB = () => {
+//   for (let i = 0; i < rawData.length; i++) {
+//     let toSave = new db.places(rawData[i]);
+//     toSave.save();
+//   }
+// }
+
+seedData(1);
 
 /*----------------- Rob's seed tutorial -----------------*/
 

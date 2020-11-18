@@ -2,7 +2,7 @@ const express = require('express');
 const db = require('../db/index.js')
 const app = express();
 
-// app.use(express.static(__dirname + '../client/index.jsx'))
+app.use(express.static(__dirname + '/../client/dist'))
 
 app.get('/api/homes/:id/nearby', (req, res) => {
   db.find( (data) => {
