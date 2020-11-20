@@ -1,16 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Place from './Place.jsx'
+import Place from './Place.jsx';
+import styled from 'styled-components';
 
-const PlacesList = ({data}) => (
-  <div id="placesList">
-    <ul>
-    {data.listings.map( (place, index) => <Place
-      key={place.list_id}
-      place={place}
-    />)}
-    </ul>
+const PlacesList = ({data, range}) => {
+  return (
+    <div>
+      {data.map( (place, index) => <Place
+        key={place.list_id}
+        place={place}
+      />)}
   </div>
-)
+  )
+}
 
 export default PlacesList;

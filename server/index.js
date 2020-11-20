@@ -1,12 +1,20 @@
 const express = require('express');
 const db = require('../db/index.js')
 const app = express();
+const bodyParser = require('body-parser');
 
 app.use(express.static(__dirname + '/../client/dist'))
+app.use(bodyParser.json());
+
 
 app.get('/api/homes/:id/nearby', (req, res) => {
-  db.find( (data) => {
-    res.json(data);
+  db.find( (err, listings) => {
+    if (err) {
+      res.status(404);
+      console.log('ERROR IN SERVER', err);
+    } else {
+      res.json(listings);
+    }
   })
 })
 
