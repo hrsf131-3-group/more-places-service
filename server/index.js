@@ -18,7 +18,7 @@ app.get('/api/homes/:id/nearby', (req, res) => {
   })
 })
 
-let port = 1128;
+let port = 3000;
 
 app.listen(port, () => {
   console.log(`listening on http://127.0.0.1:${port}`);
