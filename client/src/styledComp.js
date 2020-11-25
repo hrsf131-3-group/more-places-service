@@ -15,7 +15,7 @@ const StyledComp = {
     justify-content: space-between;
     margin: auto;
   `,
-  H1: styled.h1 `
+  H2: styled.h2 `
     margin-left: 10px;
     margin-top: auto;
     margin-bottom: 15px;

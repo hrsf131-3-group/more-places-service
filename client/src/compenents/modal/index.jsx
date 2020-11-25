@@ -1,11 +1,16 @@
 import React from 'react';
 
-const favoritesModal = ({show}) => {
-  if (show) {
-    return (<div>Hello Modal</div>)
-  } else {
-    return null;
+class FavoritesModal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    }
+  }
+
+  render() {
+    return (<div></div>)
   }
 }
 
-export default favoritesModal;
+export default FavoritesModal;

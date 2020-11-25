@@ -149,7 +149,7 @@ class App extends React.Component {
           <FavoritesModal show={this.state.show}/>
         </ModalDIV>
         <HeaderDIV>
-          <H1>More places to stay</H1>
+          <H2>More places to stay</H2>
           <RightDIV>
             <PagesDIV>
               {`${this.state.currentPage}/${this.state.lastPage}`}
@@ -166,7 +166,7 @@ class App extends React.Component {
 
 const ModalDIV = Styles.ModalDIV;
 const HeaderDIV = Styles.HeaderDIV;
-const H1 = Styles.H1;
+const H2 = Styles.H2;
 const RightDIV = Styles.RightDIV;
 const PagesDIV = Styles.PagesDIV;
 const Previous = Styles.Previous;
@@ -174,4 +174,4 @@ const PreviousSVG = Styles.PreviousSVG;
 const Next = Styles.Next;
 const NextSVG = Styles.NextSVG;
 
-export default App
+export default App;
