@@ -31,7 +31,7 @@ class App extends React.Component {
 
   componentDidMount() {
     window.addEventListener('resize', this.adjustToWindow);
-    axios.get('/api/homes/:id/nearby')
+    axios.get('/boop/homes/:id/nearby')
       .then(this.updateData)
       .catch( (err) => console.error(err) );
   }
@@ -54,8 +54,8 @@ class App extends React.Component {
     let listingsOfID = response.data[this.state.id].listings;
 
     this.setState({
-      data: response.data,
-      listingsOfID: listingsOfID
+      data: response.data || dummyData[0],
+      listingsOfID: listingsOfID || dummyData[0].listings
     });
     this.adjustToWindow();
   }
