@@ -22,5 +22,4 @@ let port = 3004;
 
 app.listen(port, () => {
   console.log(`listening on http://127.0.0.1:${port}`);
-  console.log(`Database GET at http://127.0.0.1:${port}/api/homes/:id/nearby`)
 });

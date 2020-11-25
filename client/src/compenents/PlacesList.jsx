@@ -1,16 +1,18 @@
 import React from 'react';
 import Place from './Place.jsx';
-import styled from 'styled-components';
+import Styles from '../styledComp.js';
 
 const PlacesList = ({data, range}) => {
   return (
-    <div>
+    <ListingsDIV>
       {data.map( (place, index) => <Place
         key={place.list_id}
         place={place}
       />)}
-  </div>
+    </ListingsDIV>
   )
 }
+
+const ListingsDIV = Styles.ListingsDIV;
 
 export default PlacesList;

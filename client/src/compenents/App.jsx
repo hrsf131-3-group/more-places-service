@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import PlacesList from './PlacesList.jsx';
+import FavoritesModal from './modal/index.jsx'
 import dummyData from './dummyData.js';
-import StyledComp from './styledComp.js';
+import Styles from '../styledComp.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      show: false,
+      favorites: [],
       id: 0,
       data: [],
       listingsOfID: [],
@@ -23,6 +26,7 @@ class App extends React.Component {
     this.showNext = this.showNext.bind(this);
     this.showPrevious = this.showPrevious.bind(this);
     this.adjustToWindow = this.adjustToWindow.bind(this);
+    this.showFavorites = this.showFavorites.bind(this);
   }
 
   componentDidMount() {
@@ -133,30 +137,41 @@ class App extends React.Component {
     });
   }
 
+  showFavorites(e) {
+    this.setState({show: true});
+  }
+
   render() {
-    const CarouselDIV = StyledComp.DetermineSize(this.state.range);
+    const CarouselDIV = Styles.DetermineSize(this.state.range);
     return (
       <CarouselDIV>
+        <ModalDIV>
+          <FavoritesModal show={this.state.show}/>
+        </ModalDIV>
         <HeaderDIV>
           <H1>More places to stay</H1>
-          <PagesDIV>{`${this.state.currentPage}/${this.state.lastPage}`}</PagesDIV>
-          <ButtonDIV>
-            <button onClick={this.showPrevious}>Previous</button>
-            <button onClick={this.showNext}>Next</button>
-          </ButtonDIV>
+          <RightDIV>
+            <PagesDIV>
+              {`${this.state.currentPage}/${this.state.lastPage}`}
+            </PagesDIV>
+            <Previous onClick={this.showPrevious}>{PreviousSVG}</Previous>
+            <Next onClick={this.showNext}>{NextSVG}</Next>
+          </RightDIV>
         </HeaderDIV>
-        <PlacesList data={this.state.placesToShow} range={this.state.range}/>
+        <PlacesList data={this.state.placesToShow} range={this.state.range} showFavorites={this.showFavorites}/>
       </CarouselDIV>
     )
   }
 }
 
-const PagesDIV = StyledComp.PagesDIV;
-
-const H1 = StyledComp.H1;
-
-const HeaderDIV = StyledComp.HeaderDIV;
-
-const ButtonDIV = StyledComp.ButtonDIV;
+const ModalDIV = Styles.ModalDIV;
+const HeaderDIV = Styles.HeaderDIV;
+const H1 = Styles.H1;
+const RightDIV = Styles.RightDIV;
+const PagesDIV = Styles.PagesDIV;
+const Previous = Styles.Previous;
+const PreviousSVG = Styles.PreviousSVG;
+const Next = Styles.Next;
+const NextSVG = Styles.NextSVG;
 
 export default App
