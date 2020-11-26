@@ -31,7 +31,7 @@ class App extends React.Component {
 
   componentDidMount() {
     window.addEventListener('resize', this.adjustToWindow);
-    axios.get('/boop/homes/:id/nearby')
+    axios.get('/api/homes/:id/nearby')
       .then(this.updateData)
       .catch( (err) => console.error(err) );
   }
