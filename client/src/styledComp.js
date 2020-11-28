@@ -4,12 +4,12 @@ import styled from 'styled-components';
 const StyledComp = {
   DetermineSize: range => DetermineSize(range),
 
-  //Modal
-  ModalDIV: styled.div `
-
-  `,
-
   //App.jsx styles
+  BackgroundDIV: styled.div `
+    padding-top: 48px;
+    padding-bottom: 48px;
+    background-color: rgb(247, 247, 247);
+  `,
   HeaderDIV: styled.div `
     display: flex;
     justify-content: space-between;
@@ -70,9 +70,18 @@ const StyledComp = {
     outline: none;
     cursor: pointer;
 `,
-  HeartSVG: styled.svg `
+  GreyHeartSVG: styled.svg `
     display: block;
     fill-opacity: 0.7;
+    height: 24px;
+    width: 24px;
+    stroke: white;
+    stroke-width: 2;
+    overflow: visible;
+  `,
+  PinkHeartSVG: styled.svg `
+    display: block;
+    fill: rgb(255, 56, 92);
     height: 24px;
     width: 24px;
     stroke: white;
@@ -106,27 +115,44 @@ const StyledComp = {
   HeartIcon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"/></svg>,
   StarIcon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false"><path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"/></svg>,
 
+  //FavoritesModal
+  ModalDIV: styled.div `
+    position: fixed;
+    z-index: 500;
+    background-color: white;
+    border-radius: 12px;
+    width: 70%;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px black;
+    padding: 16px;
+    left: 15%;
+    top: 30%;
+    box-sizing: border-box;
+    animation-duration: 400ms !important;
+    animation-iteration-count: 1 !important;
+    animation-fill-mode: both
+  `,
+
 }
 
 const DetermineSize = (range) => {
   if (range === 3) {
     return (styled.div `
-      width: 850px;
-      height: 340px;
+      background-color: rgb(247, 247, 247);
+      height: 100%;
       margin: auto;
-      padding-left: 48px;
-      padding-right: 48px;
+      padding-left: 40px;
+      padding-right: 40px;
       position: relative;
       overflow-x: auto;
       font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
     `)
   } else if (range === 4) {
     return (styled.div `
-      width: 1200px;
-      height: 340px;
+      height: 100%;
       margin: auto;
-      padding-left: 48px;
-      padding-right: 48px;
+      padding-left: 40px;
+      padding-right: 40px;
       position: relative;
       overflow-x: auto;
       font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;

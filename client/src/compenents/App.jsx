@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import PlacesList from './PlacesList.jsx';
-import FavoritesModal from './modal/index.jsx'
+import FavoritesModal from './modal/Modal.jsx'
 import dummyData from './dummyData.js';
 import Styles from '../styledComp.js';
 
@@ -11,9 +11,10 @@ class App extends React.Component {
     this.state = {
       show: false,
       favorites: [],
+      toSave: null,
       id: 0,
-      data: dummyData[0],
-      listingsOfID: dummyData[0].listings,
+      data: [],
+      listingsOfID: [],
       placesToShow: [],
       range: 4,
       startOfRange: 0,
@@ -27,6 +28,8 @@ class App extends React.Component {
     this.showPrevious = this.showPrevious.bind(this);
     this.adjustToWindow = this.adjustToWindow.bind(this);
     this.showFavorites = this.showFavorites.bind(this);
+    this.toSave = this.toSave.bind(this);
+    this.toggleFav = this.toggleFav.bind(this);
   }
 
   componentDidMount() {
@@ -54,8 +57,8 @@ class App extends React.Component {
     let listingsOfID = response.data[this.state.id].listings;
 
     this.setState({
-      data: response.data || dummyData[0],
-      listingsOfID: listingsOfID || dummyData[0].listings
+      data: response.data,
+      listingsOfID: listingsOfID
     });
     this.adjustToWindow();
   }
@@ -137,34 +140,62 @@ class App extends React.Component {
     });
   }
 
-  showFavorites(e) {
-    this.setState({show: true});
+  //FIX THIS AFTER TESTING--------------------------------------
+  showFavorites(event) {
+    event = !this.state.show;
+    this.setState({show: event});
+  }
+
+  toSave(place) {
+    this.setState({toSave: place});
+  }
+
+  //FIX THIS!!! ONLY WORKS WHEN 4 RENDERS NOT 12--------------
+  toggleFav(id) {
+    this.setState({
+      placesToShow: this.state.placesToShow.map( (place) => {
+          if (place.list_id !== id) {
+            return place;
+          }
+          place.isFavorite = !place.isFavorite;
+          return place;
+        }
+      )
+    })
   }
 
   render() {
     const CarouselDIV = Styles.DetermineSize(this.state.range);
     return (
-      <CarouselDIV>
-        <ModalDIV>
-          <FavoritesModal show={this.state.show}/>
-        </ModalDIV>
-        <HeaderDIV>
-          <H2>More places to stay</H2>
-          <RightDIV>
-            <PagesDIV>
-              {`${this.state.currentPage}/${this.state.lastPage}`}
-            </PagesDIV>
-            <Previous onClick={this.showPrevious}>{PreviousSVG}</Previous>
-            <Next onClick={this.showNext}>{NextSVG}</Next>
-          </RightDIV>
-        </HeaderDIV>
-        <PlacesList data={this.state.placesToShow} range={this.state.range} showFavorites={this.showFavorites}/>
-      </CarouselDIV>
+      <BackgroundDIV>
+        <div>
+          <FavoritesModal show={this.state.show} toSave={this.state.toSave}/>
+        </div>
+        <CarouselDIV>
+          <HeaderDIV>
+            <H2>More places to stay</H2>
+            <RightDIV>
+              <PagesDIV>
+                {`${this.state.currentPage}/${this.state.lastPage}`}
+              </PagesDIV>
+              <Previous onClick={this.showPrevious}>{PreviousSVG}</Previous>
+              <Next onClick={this.showNext}>{NextSVG}</Next>
+            </RightDIV>
+          </HeaderDIV>
+          <PlacesList
+            data={this.state.placesToShow}
+            range={this.state.range}
+            showFavorites={this.showFavorites}
+            toSave={this.toSave}
+            toggleFav={this.toggleFav}
+          />
+        </CarouselDIV>
+      </BackgroundDIV>
     )
   }
 }
 
-const ModalDIV = Styles.ModalDIV;
+const BackgroundDIV = Styles.BackgroundDIV;
 const HeaderDIV = Styles.HeaderDIV;
 const H2 = Styles.H2;
 const RightDIV = Styles.RightDIV;

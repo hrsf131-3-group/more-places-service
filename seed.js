@@ -45,8 +45,8 @@ let createListing = (id) => {
 
 //seeding to rawData array
 seedData = (entries) => {
-  let created = 1;
-  let listID = 1;
+  let created = 0;
+  let listID = 0;
 
   while (created <= entries) {
     let morePlaces = {
