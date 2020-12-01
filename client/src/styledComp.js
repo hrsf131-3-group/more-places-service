@@ -97,7 +97,7 @@ const StyledComp = {
   FooterDIV: styled.div `
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
+    width: 60%;
   `,
   FooterIMG: styled.img `
     width: 100%;
@@ -322,7 +322,7 @@ const DetermineSize = (range) => {
       height: 100%;
       margin-left: auto;
       margin-right: auto;
-      width: 80%;
+      width: 60%;
       position: relative;
       overflow-x: auto;
       font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
@@ -332,7 +332,7 @@ const DetermineSize = (range) => {
       height: 100%;
       margin-left: auto;
       margin-right: auto;
-      width: 80%;
+      width: 60%;
       position: relative;
       overflow-x: auto;
       font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
