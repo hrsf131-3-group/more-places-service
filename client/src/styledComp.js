@@ -97,7 +97,7 @@ const StyledComp = {
   FooterDIV: styled.div `
     margin-left: auto;
     margin-right: auto;
-    width: 60%;
+    width: 80%;
   `,
   FooterIMG: styled.img `
     width: 100%;
