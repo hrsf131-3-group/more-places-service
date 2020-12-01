@@ -24,6 +24,7 @@ const StyledComp = {
     display: flex;
     justify-content: space-between;
     margin: auto;
+    margin-right: 10px;
   `,
   H2: styled.h2 `
     margin-left: 10px;
@@ -38,21 +39,55 @@ const StyledComp = {
     margin-top: auto;
     margin-bottom: auto;
   `,
+  PreviousDIV: styled.div `
+    margin-right: 6px;
+  `,
   Previous: styled.div `
-    display: block;
-    margin-right: 10px;
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 12px;
-    fill: currentcolor;
+    -webkit-box-pack: center !important;
+    -webkit-box-align: center !important;
+    appearance: none !important;
+    display: inline-flex !important;
+    border-radius: 50% !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    outline: none !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    color: rgb(34, 34, 34) !important;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    cursor: pointer !important;
+    touch-action: manipulation !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-clip: padding-box !important;
+    box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgba(0, 0, 0, 0.18) 0px 2px 4px !important;
+    transition: box-shadow 0.2s ease 0s, -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s !important;
+    width: 32px !important;
+    height: 32px !important;
+  `,
+  NextDIV: styled.div `
+    margin-left: 6px;
   `,
   Next: styled.div `
-    display: block;
-    margin-right: 10px;
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 12px;
-    fill: currentcolor;
+    -webkit-box-pack: center !important;
+    -webkit-box-align: center !important;
+    appearance: none !important;
+    display: inline-flex !important;
+    border-radius: 50% !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    outline: none !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    color: rgb(34, 34, 34) !important;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    cursor: pointer !important;
+    touch-action: manipulation !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-clip: padding-box !important;
+    box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgba(0, 0, 0, 0.18) 0px 2px 4px !important;
+    transition: box-shadow 0.2s ease 0s, -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s !important;
+    width: 32px !important;
+    height: 32px !important;
   `,
   FooterDIV: styled.div `
     margin-left: auto;
@@ -62,8 +97,32 @@ const StyledComp = {
   FooterIMG: styled.img `
     width: 100%;
   `,
-  PreviousSVG: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false"><path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z"/></svg>,
-  NextSVG: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false"><path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z"/></svg>,
+  PreviousSVG: styled.svg.attrs({
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 18 18",
+    role: "presentation",
+    'aria-hidden': "true",
+    focusable: "false"
+  })`
+    height: 10px;
+    width: 10px;
+    display: block;
+    fill: currentcolor;
+    --darkreader-inline-fill:currentcolor;
+  `,
+  NextSVG: styled.svg.attrs({
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 18 18",
+    role: "presentation",
+    'aria-hidden': "true",
+    focusable: "false"
+  })`
+    height: 10px;
+    width: 10px;
+    display: block;
+    fill: currentcolor;
+    --darkreader-inline-fill: currentcolor;
+  `,
 
   //PlacesList.jsx styles
   ListingsDIV: styled.div `

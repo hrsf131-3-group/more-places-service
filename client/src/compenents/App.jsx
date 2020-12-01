@@ -178,8 +178,20 @@ class App extends React.Component {
                 <PagesDIV>
                   {`${this.state.currentPage}/${this.state.lastPage}`}
                 </PagesDIV>
-                <Previous onClick={this.showPrevious}>{PreviousSVG}</Previous>
-                <Next onClick={this.showNext}>{NextSVG}</Next>
+                <PreviousDIV>
+                  <Previous onClick={this.showPrevious}>
+                    <PreviousSVG>
+                      <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fill-rule="evenodd"></path>
+                    </PreviousSVG>
+                  </Previous>
+                </PreviousDIV>
+                <NextDIV>
+                  <Next onClick={this.showNext}>
+                    <NextSVG>
+                      <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path>
+                    </NextSVG>
+                  </Next>
+                </NextDIV>
               </RightDIV>
             </HeaderDIV>
             <PlacesList
@@ -206,8 +218,10 @@ const HeaderDIV = Styles.HeaderDIV;
 const H2 = Styles.H2;
 const RightDIV = Styles.RightDIV;
 const PagesDIV = Styles.PagesDIV;
+const PreviousDIV = Styles.PreviousDIV;
 const Previous = Styles.Previous;
 const PreviousSVG = Styles.PreviousSVG;
+const NextDIV = Styles.NextDIV;
 const Next = Styles.Next;
 const NextSVG = Styles.NextSVG;
 const FooterDIV =  Styles.FooterDIV;
