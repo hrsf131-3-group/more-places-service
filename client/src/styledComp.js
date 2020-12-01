@@ -22,6 +22,8 @@ const StyledComp = {
   `,
   HeaderDIV: styled.div `
     display: flex;
+    position: sticky;
+    left: 0;
     justify-content: space-between;
     margin: auto;
     margin-right: 10px;
@@ -136,14 +138,6 @@ const StyledComp = {
   `,
 
   //Place.jsx styles
-
-  // PlaceDIV: styled.div `
-  //   position: relative;
-  //   width: ${100/range}%;
-  //   margin-left: 10px;
-  //   margin-right: 10px;
-  //   scroll-snap-align: start;
-  // `,
   HeartButton: styled.button`
     position: absolute;
     right: 2px;

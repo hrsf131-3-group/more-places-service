@@ -195,7 +195,7 @@ class App extends React.Component {
               </RightDIV>
             </HeaderDIV>
             <PlacesList
-              data={this.state.placesToShow}
+              data={this.state.listingsOfID}
               range={this.state.range}
               showFavorites={this.showFavorites}
               toSave={this.toSave}
