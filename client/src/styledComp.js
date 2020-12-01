@@ -322,7 +322,7 @@ const DetermineSize = (range) => {
       height: 100%;
       margin-left: auto;
       margin-right: auto;
-      width: 60%;
+      width: 80%;
       position: relative;
       overflow-x: auto;
       font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
@@ -332,7 +332,7 @@ const DetermineSize = (range) => {
       height: 100%;
       margin-left: auto;
       margin-right: auto;
-      width: 60%;
+      width: 80%;
       position: relative;
       overflow-x: auto;
       font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
