@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import PlacesList from './PlacesList.jsx';
+import Header from './Header.jsx';
+import Carousel from './Carousel.jsx';
 import FavoritesModal from './modal/Modal.jsx'
 import dummyData from './dummyData.js';
 import Styles from '../styledComp.js';
@@ -16,7 +18,6 @@ class App extends React.Component {
       id: 0,
       data: [],
       listingsOfID: [],
-      placesToShow: [],
       range: 4,
       startOfRange: 0,
       currentPage: 1,
@@ -68,22 +69,16 @@ class App extends React.Component {
     let range = this.state.range;
     let startOfRange = this.state.startOfRange;
     let endOfRange = startOfRange + range;
-    let fullList = this.state.listingsOfID;
     let lastPage = 12/range;
     let currentPage = Math.floor(startOfRange/range) + 1;
-    let tempToShow = [];
 
     if (endOfRange > 12) {
       startOfRange = 12 - range;
       endOfRange = startOfRange + range;
       currentPage = Math.floor(startOfRange/range) + 1;
     }
-    for (let i = startOfRange; i < endOfRange; i++) {
-      tempToShow.push(fullList[i]);
-    }
 
     this.setState({
-      placesToShow: tempToShow,
       lastPage: lastPage,
       startOfRange: startOfRange,
       currentPage: currentPage
@@ -94,9 +89,7 @@ class App extends React.Component {
     let range = this.state.range;
     let startOfRange = this.state.startOfRange + range;
     let endOfRange = startOfRange + range;
-    let fullList = this.state.listingsOfID;
     let currentPage = this.state.currentPage + 1;
-    let tempToShow = [];
 
     if (endOfRange > 12) {
       startOfRange = 0;
@@ -104,25 +97,17 @@ class App extends React.Component {
       currentPage = 1;
     }
 
-    for (let i = startOfRange; i < endOfRange; i++) {
-      tempToShow.push(fullList[i]);
-    }
-
     this.setState({
-      placesToShow: tempToShow,
       startOfRange: startOfRange,
       currentPage: currentPage
     });
-
   }
 
   showPrevious() {
     let range = this.state.range;
     let startOfRange = this.state.startOfRange - range;
     let endOfRange = startOfRange + range;
-    let fullList = this.state.listingsOfID;
     let currentPage = this.state.currentPage - 1;
-    let tempToShow = [];
 
     if (startOfRange < 0) {
       startOfRange = 12 - range;
@@ -130,12 +115,7 @@ class App extends React.Component {
       currentPage = 12/range;
     }
 
-    for (let i = startOfRange; i < endOfRange; i++) {
-      tempToShow.push(fullList[i]);
-    }
-
     this.setState({
-      placesToShow: tempToShow,
       startOfRange: startOfRange,
       currentPage: currentPage
     });
@@ -151,10 +131,9 @@ class App extends React.Component {
     this.setState({toSave: place});
   }
 
-  //FIX THIS!!! ONLY WORKS WHEN 4 RENDERS NOT 12--------------
   toggleFav(id) {
     this.setState({
-      placesToShow: this.state.placesToShow.map( (place) => {
+      listingsOfID: this.state.listingsOfID.map( (place) => {
           if (place.list_id !== id) {
             return place;
           }
@@ -166,47 +145,30 @@ class App extends React.Component {
   }
 
   render() {
-    const CarouselDIV = Styles.DetermineSize(this.state.range);
     return (
       <BackgroundDIV>
-          <FavoritesModal show={this.state.show} toSave={this.state.toSave} showFavorites={this.showFavorites}/>
+          <FavoritesModal
+            show={this.state.show}
+            toSave={this.state.toSave}
+            showFavorites={this.showFavorites}
+          />
         <CarouselWrap>
-          <CarouselDIV>
-            <HeaderDIV>
-              <H2>More places to stay</H2>
-              <RightDIV>
-                <PagesDIV>
-                  {`${this.state.currentPage} / ${this.state.lastPage}`}
-                </PagesDIV>
-                <PreviousDIV>
-                  <Previous onClick={this.showPrevious}>
-                    <PreviousSVG>
-                      <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fill-rule="evenodd"></path>
-                    </PreviousSVG>
-                  </Previous>
-                </PreviousDIV>
-                <NextDIV>
-                  <Next onClick={this.showNext}>
-                    <NextSVG>
-                      <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path>
-                    </NextSVG>
-                  </Next>
-                </NextDIV>
-              </RightDIV>
-            </HeaderDIV>
-            <PlacesList
-              data={this.state.listingsOfID}
-              range={this.state.range}
-              showFavorites={this.showFavorites}
-              toSave={this.toSave}
-              toggleFav={this.toggleFav}
-            />
-          </CarouselDIV>
+          <Carousel
+            currentPage={this.state.currentPage}
+            lastPage={this.state.lastPage}
+            showPrevious={this.showPrevious}
+            showNext={this.showNext}
+            data={this.state.listingsOfID}
+            range={this.state.range}
+            showFavorites={this.showFavorites}
+            toSave={this.toSave}
+            toggleFav={this.toggleFav}
+          />
           <FooterDIV>
-            <FooterIMG src ='https://s3-us-west-1.amazonaws.com/bnb.housing/staticending.png'></FooterIMG>
+            <FooterIMG src ='https://s3-us-west-1.amazonaws.com/bnb.housing/staticending.png'>
+            </FooterIMG>
           </FooterDIV>
         </CarouselWrap>
-
       </BackgroundDIV>
     )
   }
@@ -214,16 +176,6 @@ class App extends React.Component {
 
 const CarouselWrap = Styles.CarouselWrap;
 const BackgroundDIV = Styles.BackgroundDIV;
-const HeaderDIV = Styles.HeaderDIV;
-const H2 = Styles.H2;
-const RightDIV = Styles.RightDIV;
-const PagesDIV = Styles.PagesDIV;
-const PreviousDIV = Styles.PreviousDIV;
-const Previous = Styles.Previous;
-const PreviousSVG = Styles.PreviousSVG;
-const NextDIV = Styles.NextDIV;
-const Next = Styles.Next;
-const NextSVG = Styles.NextSVG;
 const FooterDIV =  Styles.FooterDIV;
 const FooterIMG = Styles.FooterIMG;
 

@@ -15,11 +15,15 @@
   },
   "dependencies": {
     "axios": "^0.21.0",
+    "css-loader": "^5.0.1",
     "express": "^4.15.0",
     "faker": "^5.1.0",
     "mongoose": "^4.9.6",
+    "node-sass": "^5.0.0",
+    "nodesass": "0.0.2-security",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "sass-loader": "^10.1.0",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {

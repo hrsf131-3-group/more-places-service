@@ -8,8 +8,6 @@ const TransitionOpen = keyframes`
 `;
 
 const StyledComp = {
-  DetermineSize: range => DetermineSize(range),
-
   //App.jsx styles
   BackgroundDIV: styled.div `
     padding-top: 48px;
@@ -20,21 +18,32 @@ const StyledComp = {
     padding-left: 40px;
     padding-right: 40px;
   `,
+  CarouselDIV: styled.div `
+    background-color: rgb(247, 247, 247);
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    position: relative;
+    overflow-x: hidden;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+  `,
   HeaderDIV: styled.div `
     display: flex;
     position: sticky;
     left: 0;
     justify-content: space-between;
     margin: auto;
-    margin-right: 10px;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
   `,
   H2: styled.h2 `
-    margin-left: 10px;
+    margin-left: 0.5%;
     margin-top: auto;
     margin-bottom: 15px;
   `,
   RightDIV: styled.div `
     display: inline-flex;
+    margin-right: 0.5%;
   `,
   PagesDIV: styled.div `
     margin: auto;
@@ -135,6 +144,7 @@ const StyledComp = {
   ListingsDIV: styled.div `
     margin: auto;
     display: flex;
+    scroll-snap-type: y mandatory;
   `,
 
   //Place.jsx styles
@@ -228,112 +238,85 @@ const StyledComp = {
   //   background-color: #000;
   //   opacity: .5;
   // `,
-  ModalWrap: styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1050;
-    width: 100%;
-    height: 100%;
-    outline: 0;
-  `,
-  ModalSquare: styled.div`
-    z-index: 100;
-    background: white;
-    height: 75%;
-    width: 75%;
-    position: relative;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    margin-right: 10%;
-    margin-left: 10%;
-    border-radius: 10px;
-    padding: 2rem;
-    overflow: hidden;
-    animation: ${TransitionOpen} .4s;
-    animation-direction: ${show => show ? 'normal' : 'reverse'};
-    @media (max-width: 750px) {
-      height: 100%;
-      width: 100%;
-      margin: 0 auto;
-      overflow: auto;
-      border-radius: 0px;
-      // animation-direction: reverse;
-      // animation-fill-mode: backwards;
-    }
-  `,
-  ModalExit: styled.div`
-    font-size: 1.4rem;
-    font-weight: 700;
-    line-height: 1;
-    color: #000;
-    opacity: 1;
-    border: none;
-    padding-bottom: 5px;
-  `,
-  ModalGrid: styled.div`
-    display: grid;
-    max-height: 100%;
-    overflow: auto;
-    @media (min-width: 750px) {
-      grid-template-columns: 100%;
-      // overflow: auto;
-    }
-    @media (min-width: 1000px) {
-      grid-template-columns: 40% 60%;
-      // overflow: auto;
-    }
-  `,
-  Header: styled.div`
-    // overflow: auto;
-    @media (min-width: 1000px) {
-      // position: fixed;
-    }
-  `,
-  Lists: styled.div`
-    @media (min-width: 1000px) {
-      grid-column: 2;
-    }
-  `,
-  Button: styled.button`
-    border-radius: 50%;
-    border: none;
-    background-color: white;
-    font-size: 25px;
-    outline: none;
-    text-decoration: bold;
-    &:hover {
-      cursor: pointer;
-      background-color: #F5F5F5;
-    }
-  `
+  // ModalWrap: styled.div`
+  //   position: fixed;
+  //   top: 0;
+  //   left: 0;
+  //   z-index: 1050;
+  //   width: 100%;
+  //   height: 100%;
+  //   outline: 0;
+  // `,
+  // ModalSquare: styled.div`
+  //   z-index: 100;
+  //   background: white;
+  //   height: 75%;
+  //   width: 75%;
+  //   position: relative;
+  //   margin-top: 5%;
+  //   margin-bottom: 5%;
+  //   margin-right: 10%;
+  //   margin-left: 10%;
+  //   border-radius: 10px;
+  //   padding: 2rem;
+  //   overflow: hidden;
+  //   animation: ${TransitionOpen} .4s;
+  //   animation-direction: ${show => show ? 'normal' : 'reverse'};
+  //   @media (max-width: 750px) {
+  //     height: 100%;
+  //     width: 100%;
+  //     margin: 0 auto;
+  //     overflow: auto;
+  //     border-radius: 0px;
+  //     // animation-direction: reverse;
+  //     // animation-fill-mode: backwards;
+  //   }
+  // `,
+  // ModalExit: styled.div`
+  //   font-size: 1.4rem;
+  //   font-weight: 700;
+  //   line-height: 1;
+  //   color: #000;
+  //   opacity: 1;
+  //   border: none;
+  //   padding-bottom: 5px;
+  // `,
+  // ModalGrid: styled.div`
+  //   display: grid;
+  //   max-height: 100%;
+  //   overflow: auto;
+  //   @media (min-width: 750px) {
+  //     grid-template-columns: 100%;
+  //     // overflow: auto;
+  //   }
+  //   @media (min-width: 1000px) {
+  //     grid-template-columns: 40% 60%;
+  //     // overflow: auto;
+  //   }
+  // `,
+  // Header: styled.div`
+  //   // overflow: auto;
+  //   @media (min-width: 1000px) {
+  //     // position: fixed;
+  //   }
+  // `,
+  // Lists: styled.div`
+  //   @media (min-width: 1000px) {
+  //     grid-column: 2;
+  //   }
+  // `,
+  // Button: styled.button`
+  //   border-radius: 50%;
+  //   border: none;
+  //   background-color: white;
+  //   font-size: 25px;
+  //   outline: none;
+  //   text-decoration: bold;
+  //   &:hover {
+  //     cursor: pointer;
+  //     background-color: #F5F5F5;
+  //   }
+  // `
 }
-
-const DetermineSize = (range) => {
-  if (range === 3) {
-    return (styled.div `
-      background-color: rgb(247, 247, 247);
-      height: 100%;
-      margin-left: auto;
-      margin-right: auto;
-      width: 60%;
-      position: relative;
-      overflow-x: auto;
-      font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
-    `)
-  } else if (range === 4) {
-    return (styled.div `
-      height: 100%;
-      margin-left: auto;
-      margin-right: auto;
-      width: 60%;
-      position: relative;
-      overflow-x: auto;
-      font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
-    `)
-  }
-}
-
-
 
 export default StyledComp;

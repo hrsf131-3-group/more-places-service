@@ -2,7 +2,7 @@ import React from 'react';
 import Place from './Place.jsx';
 import Styles from '../styledComp.js';
 
-const PlacesList = ({data, range, showFavorites, toSave, toggleFav}) => {
+const PlacesList = ({data, range, showFavorites, toSave, toggleFav, x}) => {
   return (
     <ListingsDIV>
       {data.map( (place, index) => <Place
@@ -12,6 +12,7 @@ const PlacesList = ({data, range, showFavorites, toSave, toggleFav}) => {
         showFavorites={showFavorites}
         toSave={toSave}
         toggleFav={toggleFav}
+        x={x}
       />)}
     </ListingsDIV>
   )
