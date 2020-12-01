@@ -4,6 +4,7 @@ import PlacesList from './PlacesList.jsx';
 import FavoritesModal from './modal/Modal.jsx'
 import dummyData from './dummyData.js';
 import Styles from '../styledComp.js';
+import styled from 'styled-components';
 
 class App extends React.Component {
   constructor(props) {
@@ -168,33 +169,38 @@ class App extends React.Component {
     const CarouselDIV = Styles.DetermineSize(this.state.range);
     return (
       <BackgroundDIV>
-        <div>
-          <FavoritesModal show={this.state.show} toSave={this.state.toSave}/>
-        </div>
-        <CarouselDIV>
-          <HeaderDIV>
-            <H2>More places to stay</H2>
-            <RightDIV>
-              <PagesDIV>
-                {`${this.state.currentPage}/${this.state.lastPage}`}
-              </PagesDIV>
-              <Previous onClick={this.showPrevious}>{PreviousSVG}</Previous>
-              <Next onClick={this.showNext}>{NextSVG}</Next>
-            </RightDIV>
-          </HeaderDIV>
-          <PlacesList
-            data={this.state.placesToShow}
-            range={this.state.range}
-            showFavorites={this.showFavorites}
-            toSave={this.toSave}
-            toggleFav={this.toggleFav}
-          />
-        </CarouselDIV>
+          <FavoritesModal show={this.state.show} toSave={this.state.toSave} showFavorites={this.showFavorites}/>
+        <CarouselWrap>
+          <CarouselDIV>
+            <HeaderDIV>
+              <H2>More places to stay</H2>
+              <RightDIV>
+                <PagesDIV>
+                  {`${this.state.currentPage}/${this.state.lastPage}`}
+                </PagesDIV>
+                <Previous onClick={this.showPrevious}>{PreviousSVG}</Previous>
+                <Next onClick={this.showNext}>{NextSVG}</Next>
+              </RightDIV>
+            </HeaderDIV>
+            <PlacesList
+              data={this.state.placesToShow}
+              range={this.state.range}
+              showFavorites={this.showFavorites}
+              toSave={this.toSave}
+              toggleFav={this.toggleFav}
+            />
+          </CarouselDIV>
+          <FooterDIV>
+            <FooterIMG src ='https://s3-us-west-1.amazonaws.com/bnb.housing/staticending.png'></FooterIMG>
+          </FooterDIV>
+        </CarouselWrap>
+
       </BackgroundDIV>
     )
   }
 }
 
+const CarouselWrap = Styles.CarouselWrap;
 const BackgroundDIV = Styles.BackgroundDIV;
 const HeaderDIV = Styles.HeaderDIV;
 const H2 = Styles.H2;
@@ -204,5 +210,7 @@ const Previous = Styles.Previous;
 const PreviousSVG = Styles.PreviousSVG;
 const Next = Styles.Next;
 const NextSVG = Styles.NextSVG;
+const FooterDIV =  Styles.FooterDIV;
+const FooterIMG = Styles.FooterIMG;
 
 export default App;

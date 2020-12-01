@@ -3,7 +3,7 @@ import Styles from '../styledComp.js';
 
 const FavButton = ({place, showFavorites, toSave, toggleFav}) => (
   <HeartButton onClick={() => {
-    showFavorites(true);
+    // showFavorites(true);
     toSave({id: place.list_id, image: place.image});
     toggleFav(place.list_id);
   }}>
