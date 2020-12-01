@@ -24,9 +24,12 @@ const Place = ({place, range, showFavorites, toSave, toggleFav}) => {
             <StarDIV>{StarIcon}</StarDIV>
             {`${place.rating} (${place.numOfReviews})`}
         </RatingDIV>
-        <div className="description">
-            {`${place.type} - ${place.description}`}
-        </div>
+        <Type>
+          {`${place.type}`}
+        </Type>
+        <Description>
+          {`${place.description}`}
+        </Description>
         <PriceDIV><Price>{place.price}</Price><div>{' / night'}</div></PriceDIV>
       </Details>
       <FavButton
@@ -45,6 +48,8 @@ const StyledIMG = Styles.StyledIMG;
 const Details = Styles.Details;
 const RatingDIV = Styles.RatingDIV;
 const StarDIV = Styles.StarDIV;
+const Type = Styles.Type;
+const Description = Styles.Description;
 const StarIcon = Styles.StarIcon;
 const PriceDIV = Styles.PriceDIV;
 const Price = Styles.Price;

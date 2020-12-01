@@ -35,59 +35,64 @@ const StyledComp = {
     display: inline-flex;
   `,
   PagesDIV: styled.div `
-    margin-right: 10px;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin: auto;
+    margin-bottom: 15%;
+    color: rgb(34, 34, 34);
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    margin-right: 16px;
   `,
   PreviousDIV: styled.div `
     margin-right: 6px;
   `,
   Previous: styled.div `
-    -webkit-box-pack: center !important;
-    -webkit-box-align: center !important;
-    appearance: none !important;
-    display: inline-flex !important;
-    border-radius: 50% !important;
-    border: 1px solid rgba(0, 0, 0, 0.08) !important;
-    outline: none !important;
-    margin: 0px !important;
-    padding: 0px !important;
-    color: rgb(34, 34, 34) !important;
-    background-color: rgba(255, 255, 255, 0.9) !important;
-    cursor: pointer !important;
-    touch-action: manipulation !important;
-    align-items: center !important;
-    justify-content: center !important;
-    background-clip: padding-box !important;
-    box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgba(0, 0, 0, 0.18) 0px 2px 4px !important;
-    transition: box-shadow 0.2s ease 0s, -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s !important;
-    width: 32px !important;
-    height: 32px !important;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    appearance: none;
+    display: inline-flex;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    outline: none;
+    margin: 0px;
+    padding: 0px;
+    color: rgb(34, 34, 34);
+    background-color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    touch-action: manipulation;
+    align-items: center;
+    justify-content: center;
+    background-clip: padding-box;
+    box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    transition: box-shadow 0.2s ease 0s, -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s;
+    width: 32px;
+    height: 32px;
   `,
   NextDIV: styled.div `
     margin-left: 6px;
   `,
   Next: styled.div `
-    -webkit-box-pack: center !important;
-    -webkit-box-align: center !important;
-    appearance: none !important;
-    display: inline-flex !important;
-    border-radius: 50% !important;
-    border: 1px solid rgba(0, 0, 0, 0.08) !important;
-    outline: none !important;
-    margin: 0px !important;
-    padding: 0px !important;
-    color: rgb(34, 34, 34) !important;
-    background-color: rgba(255, 255, 255, 0.9) !important;
-    cursor: pointer !important;
-    touch-action: manipulation !important;
-    align-items: center !important;
-    justify-content: center !important;
-    background-clip: padding-box !important;
-    box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgba(0, 0, 0, 0.18) 0px 2px 4px !important;
-    transition: box-shadow 0.2s ease 0s, -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s !important;
-    width: 32px !important;
-    height: 32px !important;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    appearance: none;
+    display: inline-flex;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    outline: none;
+    margin: 0px;
+    padding: 0px;
+    color: rgb(34, 34, 34);
+    background-color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    touch-action: manipulation;
+    align-items: center;
+    justify-content: center;
+    background-clip: padding-box;
+    box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    transition: box-shadow 0.2s ease 0s, -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s;
+    width: 32px;
+    height: 32px;
   `,
   FooterDIV: styled.div `
     margin-left: auto;
@@ -182,6 +187,31 @@ const StyledComp = {
     width: 14px;
     fill: currentcolor;
     color: #ff385c;
+  `,
+  Type: styled.div `
+    color: var(--card-typography-color-primary, #222222) !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    max-height: 20px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 1 !important;
+    -webkit-box-orient: vertical !important;
+  `,
+  Description: styled.div `
+    color: var(--card-typography-color-primary, #222222) !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    line-height: 20px !important;
+    max-height: 20px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 1 !important;
+    -webkit-box-orient: vertical !important;
   `,
   PriceDIV: styled.div `
     display: inline-flex;

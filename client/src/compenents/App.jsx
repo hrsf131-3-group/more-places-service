@@ -176,7 +176,7 @@ class App extends React.Component {
               <H2>More places to stay</H2>
               <RightDIV>
                 <PagesDIV>
-                  {`${this.state.currentPage}/${this.state.lastPage}`}
+                  {`${this.state.currentPage} / ${this.state.lastPage}`}
                 </PagesDIV>
                 <PreviousDIV>
                   <Previous onClick={this.showPrevious}>

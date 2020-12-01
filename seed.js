@@ -23,8 +23,8 @@ const images = [
   'https://s3-us-west-1.amazonaws.com/bnb.housing/0d4751c8-d5b8-47da-a4f7-766bb6cd70e3_d.jpg',
   'https://s3-us-west-1.amazonaws.com/bnb.housing/000.jpg'
   ]
-const type = ['House', 'Hotel', 'Apartment'];
-const description = ['Big Bear Loft', 'Double Queen', 'KingSizeBed', 'Near Disneyland']
+const type = ['Entire House', 'House', 'Apartment', 'House', 'Hotel', 'Cabin', 'Hotel', 'Apartment'];
+const description = ['Perfect Large Cabin for Families and Friends', 'River’s Peace- Longer stays welcome too!', 'Custom Home with Wonderful Mountain Views', 'Near Disneyland', 'Pine Lake Waterfront House with private dock', 'Riverfront Luxury with Captivating Views', 'Relax at this Tranquil Lakefront Home', 'Custom Beautiful Hand Crafted Log Home']
 
 //will hold an array of objects of each listing
 let rawData = [];
@@ -33,9 +33,9 @@ let rawData = [];
 let createListing = (id) => {
   return {
     list_id: id,
-    image: images[id%20],
-    type: `${type[id%3]} ${Math.floor(Math.random()*4 + 1)} Beds`,
-    description: description[id%4],
+    image: images[id%16],
+    type: `${type[id%8]} ${Math.floor(Math.random()*3 + 2)} Beds`,
+    description: description[id%7],
     price: `$${Math.floor(Math.random()*300 + 100)}`,
     numOfReviews: Math.floor(Math.random()*100),
     rating: Math.floor((Math.random()*150 + 350))/100,
